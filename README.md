@@ -10,4 +10,4 @@ It provides autocomplete suggestions, store filtering, and price chart visualiza
 - Edge
 
 ## Developer Manual
-See [`docs/DEVELOPER_MANUAL.md`](DEVELOPER_MANUAL.md) below for setup instructions and technical details.
+See [`DEVELOPER_MANUAL.md`](docs/DEVELOPER_MANUAL.md) below for setup instructions and technical details.
