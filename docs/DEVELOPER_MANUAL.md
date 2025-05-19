@@ -1,6 +1,3 @@
-The audience of this document is future developers who will take over your system.
-They know technical terms and have general knowledge about web applications, but do not have knowledge about your system design.
-You need to provide a technical document so that future developers can start setting up the application on their local machines, and keep working on the system development after you leave the team.
 Installation
 1. Clone the Repository
 git clone https://github.com/jbui1234/INST377_Final.git
@@ -27,6 +24,8 @@ GET /api/saved_games
 Returns all entries in the Supabase table as JSON  
 Used on the homepage to list saved deals  
 5. Tests
+  - User tests include being able to fetch price data from cheapshark api
+  - Fetching platform and title information about games
 6. Expectations/Road-Map/Bugs
 - Bugs 
   - Duplicate game entries are not filtered
