@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Game Tracker</title>
+  <link rel="stylesheet" href="tracker.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="tracker.html">Tracker</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h1>Track Game Deals</h1>
+    <div class="search-area">
+      <input type="text" id="game-search" placeholder="Search for a game..." />
+      <button onclick="searchGame()">Search</button>
+      <ul id="suggestions" class="autocomplete-list"></ul>
+    </div>
+
+    <h2>Filter by Store</h2>
+    <select id="store-select">
+      <option value="">All Stores</option>
+    </select>
+
+    <div id="deal-results"></div>
+
+    <h2> Best Deal Comparison by Store</h2>
+    <canvas id="priceChart" width="600" height="400"></canvas>
+  </main>
+
+  <script src="tracker.js"></script>
+</body>
+</html>

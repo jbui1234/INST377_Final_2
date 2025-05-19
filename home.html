@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game Price Tracker</title>
+  <link rel="stylesheet" href="home.css" />
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="tracker.html">Tracker</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <input type="text" id="search-bar" placeholder="Search for a game..." />
+    <div id="search-results"></div>
+
+    <section id="popular-deals-section">
+      <h2>Popular & Discounted Games</h2>
+      <div id="popular-games"></div>
+    </section>
+
+    <section id="popular-platforms-section">
+      <h2>Popular Platforms</h2>
+      <div id="platform-list"></div>
+    </section>
+
+    <section id="saved-games-section">
+      <h2>Your Saved Games</h2>
+      <p>You have no saved games yet.</p>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="home.js"></script>
+</body>
+</html>

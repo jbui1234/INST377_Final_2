@@ -1,0 +1,156 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #f5f5f5;
+  background: linear-gradient(to bottom right, #1c1c1c, #2a2a2a);
+}
+
+nav {
+  background: #121212;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+  padding: 1rem 0; 
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  padding-top: 3rem; 
+}
+
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0.75rem 1rem;
+  gap: 2rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: #f5f5f5;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #00bcd4;
+}
+
+#search-bar {
+  width: 100%;
+  max-width: 500px;
+  padding: 14px 18px;
+  font-size: 1rem;
+  margin: 1rem auto 2rem;
+  display: block;
+  border: none;
+  border-radius: 12px;
+  background: #f5f5f5;
+  color: #111;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+#search-bar::placeholder {
+  color: #666;
+}
+
+#search-bar:focus {
+  outline: 2px solid #00bcd4;
+}
+
+section {
+  margin-top: 3rem;
+}
+
+section > h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #f5f5f5;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+section > h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, #00bcd4, #8e24aa);
+  margin: 0.5rem auto 0;
+  border-radius: 3px;
+}
+
+#popular-games,
+#search-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.platform-games {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.game {
+  background: linear-gradient(to top right, #2f2f2f, #3c3c3c);
+  border-radius: 16px;
+  padding: 1.2rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.game:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0, 188, 212, 0.4);
+}
+
+.game h3,
+.game h4 {
+  font-size: 1.15rem;
+  color: #ffffff;
+  margin: 0.5rem 0;
+}
+
+.game p {
+  color: #00e676;
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 0.5rem 0 0;
+}
+
+#platform-list > div {
+  margin-bottom: 3rem;
+}
+
+#saved-games-section {
+  background: linear-gradient(to right, #212121, #424242);
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#saved-games-section h2 {
+  color: #eeeeee;
+}
+
+#saved-games-section p {
+  color: #b0bec5;
+  font-style: italic;
+}

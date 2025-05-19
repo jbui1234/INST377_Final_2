@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About</title>
+  <link rel="stylesheet" href="about.css" />
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="tracker.html">Tracker</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h1>About Game Price Tracker</h1>
+
+    <p>
+      This app leverages the public CheapShark API to aggregate pricing data across 
+      major PC game storefronts, providing a single unified interface where gamers can 
+      compare current offers side by side.
+    </p>
+
+    <h2>Key Features and User Flow</h2>
+    <ul>
+      <li>
+        <strong>Search and Discovery</strong>: When a user begins typing a title, the 
+        autocomplete feature queries the CheapShark games endpoint and returns live 
+        suggestions to ensure relevance and minimal wait times.
+      </li>
+      <li>
+        <strong>Dynamic Filtering</strong>: After selecting a game, the app retrieves 
+        all active deals, computes the lowest price per storefront, and updates the 
+        platform dropdown to show only those stores with current offers, reducing 
+        user decision fatigue.
+      </li>
+      <li>
+        <strong>Visual Comparison</strong>: A responsive bar chart built with Chart.js 
+        ranks platforms by price. High contrast colors and clear labels support both 
+        accessibility and quick insight for all users.
+      </li>
+    </ul>
+
+    <h2>Ethics</h2>
+    <p>
+      Ethically, the app prioritizes transparency. All pricing data is attributed to CheapShark, 
+      and users are reminded that prices can change rapidly. The interface avoids hidden fees 
+      or deceptive prompts, fostering trust and respecting user autonomy.
+    </p>
+
+    <h2>Technical Stack and Learnings</h2>
+    <p>
+      <strong>Frontend</strong>: JavaScript using the Fetch API, Chart.js for visualizations, 
+      and modern CSS techniques such as Flexbox for a clean, adaptable UI.<br>
+      <strong>Backend </strong>: Supabase to manage alert persistence, log analytics, 
+      and secure API interactions if moving to a private endpoint model.<br>
+      <strong>Deployment</strong>: Hosted on Vercel with continuous integration that runs automated tests 
+      for console errors and layout regressions on every push.
+    </p>
+
+    <p>
+      Game Price Tracker showcases efficient data retrieval, 
+      user-centered interface design, and ethical handling of real-time data. It provides utility for gamers 
+      and serves as a blueprint for building data-driven, user-focused applications.
+    </p>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="about.js"></script>
+</body>
+</html>
