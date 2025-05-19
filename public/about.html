@@ -19,7 +19,7 @@
 
     <p>
       This app leverages the public CheapShark API to aggregate pricing data across 
-      major PC game storefronts, providing a single unified interface where gamers can 
+      major PC game storefronts, providing a centralized interface where gamers can 
       compare current offers side by side.
     </p>
 
@@ -34,7 +34,7 @@
         <strong>Dynamic Filtering</strong>: After selecting a game, the app retrieves 
         all active deals, computes the lowest price per storefront, and updates the 
         platform dropdown to show only those stores with current offers, reducing 
-        user decision fatigue.
+        indecision.
       </li>
       <li>
         <strong>Visual Comparison</strong>: A responsive bar chart built with Chart.js 
@@ -47,17 +47,15 @@
     <p>
       Ethically, the app prioritizes transparency. All pricing data is attributed to CheapShark, 
       and users are reminded that prices can change rapidly. The interface avoids hidden fees 
-      or deceptive prompts, fostering trust and respecting user autonomy.
+      or deceptive prompts, fostering trust and respecting users.
     </p>
 
     <h2>Technical Stack and Learnings</h2>
     <p>
       <strong>Frontend</strong>: JavaScript using the Fetch API, Chart.js for visualizations, 
       and modern CSS techniques such as Flexbox for a clean, adaptable UI.<br>
-      <strong>Backend </strong>: Supabase to manage alert persistence, log analytics, 
-      and secure API interactions if moving to a private endpoint model.<br>
-      <strong>Deployment</strong>: Hosted on Vercel with continuous integration that runs automated tests 
-      for console errors and layout regressions on every push.
+      <strong>Backend </strong>: Supabase to manage data management, log analytics, 
+      and secure API interactions.<br>
     </p>
 
     <p>
