@@ -1,10 +1,18 @@
+function getVisitorId() {
+  let id = localStorage.getItem('visitorId');
+  if (!id) {
+    id = crypto.randomUUID();
+    localStorage.setItem('visitorId', id);
+  }
+  return id;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   loadPopularDeals();
   loadTopGamesByPlatform();
   setupSearch();
-  loadSavedGames(); 
+  loadSavedGames();
 });
-
 
 function loadPopularDeals() {
   const container = document.getElementById('popular-games');
@@ -15,7 +23,6 @@ function loadPopularDeals() {
         container.innerHTML = '<p>No deals available at the moment.</p>';
         return;
       }
-
       container.innerHTML = data.slice(0, 8).map(deal => `
         <div class="game">
           <h3>${deal.title}</h3>
@@ -26,29 +33,6 @@ function loadPopularDeals() {
     .catch(err => console.error('Error loading popular deals:', err));
 }
 
-function loadSavedGames() {
-  fetch('/api/saved_games')
-    .then(res => res.json())
-    .then(games => {
-      const section = document.getElementById('saved-games-section');
-      if (!games.length) {
-        section.innerHTML = '<p>No saved games yet.</p>';
-        return;
-      }
-
-      section.innerHTML = `
-        <h2>Your Saved Games</h2>
-        ${games.map(g => `
-          <p><strong>${g.title}</strong> - $${g.price} at ${g.store}</p>
-        `).join('')}
-      `;
-    })
-    .catch(err => {
-      console.error('Error fetching saved games:', err);
-    });
-}
-
-
 function loadTopGamesByPlatform() {
   const platforms = [
     { name: "Steam", id: 1 },
@@ -58,7 +42,7 @@ function loadTopGamesByPlatform() {
   ];
 
   const platformList = document.getElementById('platform-list');
-  platformList.innerHTML = ''; 
+  platformList.innerHTML = '';
 
   platforms.forEach(platform => {
     fetch(`https://www.cheapshark.com/api/1.0/deals?storeID=${platform.id}&upperPrice=15`)
@@ -86,7 +70,7 @@ function setupSearch() {
   const searchBar = document.getElementById('search-bar');
   const results = document.getElementById('search-results');
 
-  searchBar.addEventListener('keypress', function (e) {
+  searchBar.addEventListener('keypress', e => {
     if (e.key === 'Enter') {
       const query = searchBar.value.trim();
       if (!query) return;
@@ -94,13 +78,11 @@ function setupSearch() {
       fetch(`https://www.cheapshark.com/api/1.0/games?title=${encodeURIComponent(query)}`)
         .then(res => res.json())
         .then(data => {
-          results.innerHTML = ''; 
-
+          results.innerHTML = '';
           if (!data.length) {
             results.innerHTML = `<p>No results found for "${query}".</p>`;
             return;
           }
-
           results.innerHTML = data.slice(0, 5).map(game => `
             <div class="game">
               <h3>${game.external}</h3>
@@ -111,22 +93,25 @@ function setupSearch() {
         .catch(err => console.error('Error during search:', err));
     }
   });
-function loadSavedOnHome(){
-  const section=document.getElementById('saved-games-section');
-  const visitorId=localStorage.getItem('visitorId');
-  fetch(`/api/saved_games?visitorId=${visitorId}`)
-    .then(r=>r.json())
-    .then(data=>{
-      if(!data.length){
-        section.innerHTML='<h2>Your Saved Games</h2><p>No saved games yet.</p>';
-      } else {
-        section.innerHTML='<h2>Your Saved Games</h2><ul>'+
-          data.map(g=>`<li>${g.title} (${g.store} - $${parseFloat(g.price).toFixed(2)})</li>`).join('')+
-          '</ul>';
-      }
-    })
-    .catch(console.error);
 }
-document.addEventListener('DOMContentLoaded',()=>{loadSavedOnHome();});
 
+function loadSavedGames() {
+  const section = document.getElementById('saved-games-section');
+  const visitorId = getVisitorId();
+
+  fetch(`/api/saved_games?visitorId=${visitorId}`)
+    .then(res => res.json())
+    .then(games => {
+      if (!games.length) {
+        section.innerHTML = '<p>No saved games yet.</p>';
+        return;
+      }
+      section.innerHTML = `
+        <h2>Your Saved Games</h2>
+        ${games.map(g => `
+          <p><strong>${g.title}</strong> - $${parseFloat(g.price).toFixed(2)} at ${g.store}</p>
+        `).join('')}
+      `;
+    })
+    .catch(err => console.error('Error fetching saved games:', err));
 }
