@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js';
+const { createClient } = require('@supabase/supabase-js');
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -27,16 +27,13 @@ module.exports = async function handler(req, res) {
   const gameRes = await fetch(
     `https://www.cheapshark.com/api/1.0/games?id=${gameID}`
   );
-  const gameData = await gameRes.json();
-
-  const deal = gameData.deals?.[0];
+  const { deals } = await gameRes.json();
+  const deal = Array.isArray(deals) && deals[0];
   if (!deal) {
     return res.status(404).json({ error: 'No deals found' });
   }
 
-  const storeRes = await fetch(
-    'https://www.cheapshark.com/api/1.0/stores'
-  );
+  const storeRes = await fetch('https://www.cheapshark.com/api/1.0/stores');
   const storeList = await storeRes.json();
   const storeName =
     storeList.find(s => s.storeID === deal.storeID)?.storeName ||
@@ -58,4 +55,4 @@ module.exports = async function handler(req, res) {
   }
 
   res.status(200).json(data[0]);
-}
+};
